@@ -2,12 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using Notes.Application.Common.Exceptions;
 using Notes.Application.Interfaces;
-using Notes.Application.Notes.Commands.CreateNote;
 using Notes.Domain;
 
 namespace Notes.Application.Notes.Commands.UpdateNote
 {
-	internal class UpdateNoteCommandHandler : IRequestHandler<CreateNoteCommand>
+	internal class UpdateNoteCommandHandler : IRequestHandler<UpdateNoteCommand>
 	{
 		private readonly INotesDbContext _dbContext;
 
