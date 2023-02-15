@@ -7,6 +7,7 @@ using Notes.Application.Common.Mappings;
 using Notes.Application.Interfaces;
 using Notes.Persistence;
 using System.Reflection;
+using Notes.WebApi.Controllers;
 
 namespace Notes.WebApi
 {
@@ -24,7 +25,7 @@ namespace Notes.WebApi
 
 			services.AddApplication();
 			services.AddPersistence(Configuration);
-
+			services.AddControllers();
 			services.AddCors(options =>
 			{
 				options.AddPolicy("AllowAll", policy =>

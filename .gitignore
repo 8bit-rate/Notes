@@ -7,3 +7,6 @@
 [Oo]bj/
 x64/
 x86/
+
+# Database files
+*.db*
