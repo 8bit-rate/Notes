@@ -1,6 +1,4 @@
-﻿
-
-using MediatR;
+﻿using MediatR;
 using Notes.Application.Interfaces;
 using Notes.Domain;
 
@@ -12,7 +10,7 @@ namespace Notes.Application.Notes.Commands.CreateNote
 
 		public CreateNoteCommandHandler(INotesDbContext dbContext) =>
 			_dbContext = dbContext;
-		
+
 		public async Task<Guid> Handle(CreateNoteCommand request, CancellationToken cancellationToken)
 		{
 			var note = new Note
