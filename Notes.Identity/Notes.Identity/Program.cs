@@ -1,3 +1,5 @@
+using Notes.Identity.Data;
+
 namespace Notes.Identity
 {
 	public class Program
@@ -10,13 +12,13 @@ namespace Notes.Identity
 				var serviceProvider = scope.ServiceProvider;
 				try
 				{
-					//var context = serviceProvider.GetRequiredService<AuthDbContext>();
-					//DbInitializer.Initialize(context);
+					var context = serviceProvider.GetRequiredService<AuthDbContext>();
+					DbInitializer.Initialize(context);
 				}
 				catch (Exception exception)
 				{
-					//var logger = serviceProvider.GetRequiredService<ILogger<Program>>();
-					//logger.LogError(exception, "An error occurred while app initialization");
+					var logger = serviceProvider.GetRequiredService<ILogger<Program>>();
+					logger.LogError(exception, "An error occurred while app initialization");
 				}
 			}
 			host.Run();
