@@ -16,7 +16,7 @@ namespace Notes.WebApi.Middleware
 			{
 				await _next(context);
 			}
-			catch(Exception ex)
+			catch (Exception exception)
 			{
 				await HandleExceptionAsync(context, exception);
 			}
@@ -38,12 +38,12 @@ namespace Notes.WebApi.Middleware
 					break;
 			}
 
-			context.Response.ContentType= "application/json";
+			context.Response.ContentType = "application/json";
 			context.Response.StatusCode = (int)code;
 
-			if(result == string.Empty)
+			if (result == string.Empty)
 			{
-				result = JsonSerializer.Serialize(new { errpr = exception.Message});
+				result = JsonSerializer.Serialize(new { errpr = exception.Message });
 			}
 
 			return context.Response.WriteAsync(result);

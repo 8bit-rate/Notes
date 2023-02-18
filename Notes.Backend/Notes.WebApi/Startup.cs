@@ -1,13 +1,9 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.AspNetCore.Http;
-using Notes.Application;
+﻿using Notes.Application;
 using Notes.Application.Common.Mappings;
 using Notes.Application.Interfaces;
 using Notes.Persistence;
+using Notes.WebApi.Middleware;
 using System.Reflection;
-using Notes.WebApi.Controllers;
 
 namespace Notes.WebApi
 {
@@ -38,13 +34,14 @@ namespace Notes.WebApi
 
 		}
 
-		public void Configure (IApplicationBuilder app, IWebHostEnvironment env)
+		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
 			if (env.IsDevelopment())
 			{
 				app.UseDeveloperExceptionPage();
 			}
 
+			app.UseCustomExceptionHandler();
 			app.UseRouting();
 			app.UseHttpsRedirection();
 			app.UseCors("AllowAll");
