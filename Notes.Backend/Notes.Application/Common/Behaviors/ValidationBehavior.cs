@@ -1,10 +1,5 @@
 ﻿using FluentValidation;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Notes.Application.Common.Behaviors
 {
@@ -23,12 +18,12 @@ namespace Notes.Application.Common.Behaviors
 				.Where(failure => failure != null)
 				.ToList();
 
-			if(failures.Count != 0)
+			if (failures.Count != 0)
 			{
 				throw new ValidationException(failures);
 			}
 
-			return next;
+			return next();
 		}
 		public ValidationBehavior(IEnumerable<IValidator<TRequest>> validators) => _validators = validators;
 	}
